@@ -158,6 +158,8 @@ class AnsatzBasedCostFunction(CostFunction):
         """
         if self.fixed_parameters is not None:
             new_parameters = combine_ansatz_params(self.fixed_parameters, parameters)
+        else:
+            new_parameters = parameters
         circuit = self.ansatz.get_executable_circuit(new_parameters)
         expectation_values = self.estimator.get_estimated_expectation_values(
             self.backend,
